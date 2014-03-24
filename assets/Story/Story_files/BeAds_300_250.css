@@ -1,0 +1,13 @@
+.b300250_box {width:290px;height:218px; float:left;} 
+.b300250_item {width:100%; height:90px; padding:7px 0 13px 0; float:left;} 
+.b300250_item:hover {background: #eeeeee;} 
+.b300250_item_text {width:100%; height:55px; padding:0 5px 19px 0; float:left;} 
+.b300250_item_text:hover {background: #eeeeee;}
+.b300250_right {width:180px;float:left; margin-left:5px;} 
+.b300250_right_text {float:left; padding:5px;} 
+.b300250_title {line-height:14px; font-weight:bold;color:#00757f;font-size:12px; margin-bottom:1px;width: 100%;}             
+.b300250_link {color:#eb6d00; font-size:11px; margin-bottom:1px; width:100%;} 
+.b300250_img {float:left; width:92px; height:92px;} 
+.b300250_img img {width:92px; height:92px;} 
+.b300250_content {width:100%; float:left; line-height:15px; font-size:12px;}
+a .b300250_content{color:#4e4e4e}

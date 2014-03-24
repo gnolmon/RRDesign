@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">R&amp;RDesign</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_study">StudyActivity</string>
+    <string name="title_activity_relax">RelaxActivity</string>
+    <string name="title_activity_setting">SettingActivity</string>
+    <string name="title_activity_request">RequestActivity</string>
+    <string name="dialogMessage">"Finish Study Let's Relax"</string>
+    <string name="snooze">Snooze</string>
+    <string name="ok">OK</string>
+    <string name="title_activity_quiz_display">QuizDisplay</string>
+    <string name="title_activity_web_display">WebDisplay</string>
+    <string name="title_activity_video">VideoActivity</string>
+    <string name="title_activity_image">ImageActivity</string>
+    <string name="yoga1">"Bạn nằm ngửa trên giường (giường cứng là tốt nhất), vòng hai tay ôm hai đầu gối, thân cong lại như hình vòng cung, vùng cột sống thắt lưng tiếp giáp với mặt giường. Từ tư thế này, bạn lăn tới lăn lui thế nào cho hai bàn chân chạm giường rồi đến đầu của bạn chạm giường. Làm như vậy 10-15 lần, bạn sẽ thấy tim mình đập tốt hơn, cảm giác mệt mỏi, uể oải hầu như tan biến."</string>
+    <string name="yoga2">" Bạn chống hai cùi chỏ tay xuống giường, hai cẳng tay duỗi song song với thân mình, giữ đầu cao, lưng thẳng. Vận động kế tiếp là co hai mũi chân về phía bụng, rồi duỗi thẳng hai mũi chân, thấy đau đau hai bắp chân là được. Làm động tác này 10-20 lần, sẽ giúp máu lưu thông ở chân tốt hơn, phòng ngừa được chứng chuột rút rất hiệu quả."</string>
+    <string name="yoga3">"o duỗi bàn chân, bạn nghỉ để hít thở sâu khoảng 10 giây, rồi xoay vòng hai bàn chân theo chiều kim đồng hồ 20, ngược chiều kim đồng hồ 20 vòng. Động tác này làm cho đầu óc tỉnh táo hơn, cổ chân bạn khoẻ hơn, phòng tránh khi lên xuống cầu thang hoặc lề đường nếu bị vấp sẽ không bị bong gân cổ chân."</string>
+    <string name="yoga4">"Đứng thẳng (hoặc đi tới đi lui trong phòng), đưa 2 cánh tay lên cao, hợp với thân mình góc 45-60 độ, phẩy tay ra sau lưng, càng cao càng tốt, phẩy 2 lần (hít vào), phẩy tiếp 2 lần (thở ra), thở càng chậm, sâu, càng tốt. Tuy nhiên, thời gian hít thở nhanh hay chậm nên tùy theo tình trạng cơ thể của từng người."</string>
+    <string name="quiz1">"Một ly thuỷ tinh đựng đầy nước, làm thế nào để lấy nước dưới đáy ly mà không đổ nước ra ngoài?"</string>
+    <string name="story1">Story</string>
+    <string name="title_activity_story">StoryActivity</string>
+    <string name="title_activity_yoga">YogaActivity</string>
+    <string name="title_activity_image_display">ImageDisplayActivity</string>
+    <string name="title_activity_method">MethodActivity</string>
+    <string name="title_activity_webgame">WebgameActivity</string>
+
+</resources>
