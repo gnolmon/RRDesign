@@ -16,13 +16,14 @@ import android.widget.TextView;
 public class StudyActivity extends Activity {
 
 	/*
-	 * TODO: Xử lý setting chưa tốt, nên thay thế = SharedPreference
+	 * TODO: Xu ly setting chua tot, nen thay the = SharedPreference
 	 */
 
 	/*
-	 * TODO: Thiết lập hẳn 1 service để quản lý MediaPlayer và các Counter Dùng
-	 * thêm notification để biết người dùng đang học cũng giúp cho process ko bị
-	 * kill bởi android khi còn ít resource
+	 * TODO: Thiet lap han 1 service de quan ly MediaPlayer va cac Counter them
+	 * notification de khi thoat ra ngoai nguoi dung van biet ho dang hoc va co
+	 * the quay tro lai app bang cach an vao notification nay notification cung
+	 * giup process khong bi kill boi system khi no can resource
 	 */
 
 	private static int time = 25;
@@ -143,9 +144,12 @@ public class StudyActivity extends Activity {
 	protected void onDestroy() {
 
 		super.onDestroy();
-		mediaPlayer.stop();
-		mediaPlayer.release();
-		counter.cancel();
+		if (mediaPlayer != null) {
+			mediaPlayer.stop();
+			mediaPlayer.release();
+		}
+		if (counter != null)
+			counter.cancel();
 	}
 
 }

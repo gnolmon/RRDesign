@@ -112,8 +112,10 @@ public class RelaxActivity extends Activity {
 						Intent study = new Intent(RelaxActivity.this,
 								StudyActivity.class);
 						startActivity(study);
-						
-						//Finish để tránh người dùng back lại là sẽ về Relax
+
+						// Finish Relax Activity de tranh khi nguoi dung an phim
+						// back co the quay tro lai relax trong luc dang hoc
+
 						finish();
 					}
 				});
@@ -124,13 +126,13 @@ public class RelaxActivity extends Activity {
 
 	public class RelaxCount extends CountDownTimer {
 		RelaxCount(long millisInFuture, long countDownInterval) {
-			
+
 			super(millisInFuture, countDownInterval);
 		}
 
 		@Override
 		public void onFinish() {
-			
+
 			Uri notification = RingtoneManager
 					.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
 			Ringtone r = RingtoneManager.getRingtone(getApplicationContext(),
@@ -143,7 +145,7 @@ public class RelaxActivity extends Activity {
 
 		@Override
 		public void onTick(long millisUntilFinished) {
-			
+
 			int m;
 			m = (int) millisUntilFinished / 60000;
 
@@ -152,12 +154,15 @@ public class RelaxActivity extends Activity {
 
 	@Override
 	protected void onDestroy() {
-		
 		super.onDestroy();
+		if (counter != null)
+			counter.cancel();
+		if (counterSnooze != null)
+			counterSnooze.cancel();
 	}
 
 	public static void settingRelax(int time2, int snoozetime) {
-		
+
 		timeRelax = time2;
 		snoozeTimes = snoozetime;
 	}

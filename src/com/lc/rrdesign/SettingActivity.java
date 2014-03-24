@@ -18,7 +18,7 @@ import android.widget.Toast;
 public class SettingActivity extends Activity {
 
 	/*
-	 * TODO: Xử lý setting chưa tốt, nên thay thế = SharedPreference
+	 * TODO: Xu ly setting chua tot, nen thay the = SharedPreference
 	 */
 
 	private static int time = 45, snooze = 3;
@@ -31,7 +31,7 @@ public class SettingActivity extends Activity {
 
 		SeekBar seekBar1 = (SeekBar) findViewById(R.id.seekBar1);
 
-		// Thêm min max và step cho seekBar
+		// Them min max va step cho seekBar
 		seekBar1.setProgress(15);
 		seekBar1.incrementProgressBy(1);
 		seekBar1.setMax(60);
@@ -63,7 +63,7 @@ public class SettingActivity extends Activity {
 
 		SeekBar seekBar2 = (SeekBar) findViewById(R.id.seekBar2);
 
-		// Thêm min max và step cho seekBar
+		// Them min max va step cho seekBar
 		seekBar2.setProgress(1);
 		seekBar2.incrementProgressBy(1);
 		seekBar2.setMax(3);
