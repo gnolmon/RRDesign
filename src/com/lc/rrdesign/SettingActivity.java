@@ -17,62 +17,78 @@ import android.widget.Toast;
 
 public class SettingActivity extends Activity {
 
+	/*
+	 * TODO: Xử lý setting chưa tốt, nên thay thế = SharedPreference
+	 */
+
 	private static int time = 45, snooze = 3;
 	private static String urlMusic = " ";
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_setting);
 
 		SeekBar seekBar1 = (SeekBar) findViewById(R.id.seekBar1);
+
+		// Thêm min max và step cho seekBar
+		seekBar1.setProgress(15);
+		seekBar1.incrementProgressBy(1);
+		seekBar1.setMax(60);
 		final TextView seekBar1Value = (TextView) findViewById(R.id.seekbar1value);
+		seekBar1Value.setText(String.valueOf(15));
 		seekBar1.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
 
 			@Override
 			public void onProgressChanged(SeekBar seekBar, int progress,
 					boolean fromUser) {
-				// TODO Auto-generated method stub
-				time = progress / 3;
-				seekBar1Value.setText(String.valueOf(progress / 3));
+
+				time = progress;
+
+				seekBar1Value.setText(String.valueOf(progress));
 				StudyActivity.settingStudy(time, snooze, urlMusic);
-				RelaxActivity.settingRelax(time/5, snooze);
+				RelaxActivity.settingRelax(time / 5, snooze);
 			}
 
 			@Override
 			public void onStartTrackingTouch(SeekBar seekBar) {
-				// TODO Auto-generated method stub
+
 			}
 
 			@Override
 			public void onStopTrackingTouch(SeekBar seekBar) {
-				// TODO Auto-generated method stub
+
 			}
 		});
 
 		SeekBar seekBar2 = (SeekBar) findViewById(R.id.seekBar2);
+
+		// Thêm min max và step cho seekBar
+		seekBar2.setProgress(1);
+		seekBar2.incrementProgressBy(1);
+		seekBar2.setMax(3);
 		final TextView seekBar2Value = (TextView) findViewById(R.id.seekbar2value);
+		seekBar2Value.setText(String.valueOf(1));
 		seekBar2.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
 
 			@Override
 			public void onProgressChanged(SeekBar seekBar, int progress,
 					boolean fromUser) {
-				// TODO Auto-generated method stub
-				snooze = progress / 20;
-				seekBar2Value.setText(String.valueOf(progress / 30));
+
+				seekBar2Value.setText(String.valueOf(progress));
 				StudyActivity.settingStudy(time, snooze, urlMusic);
-				RelaxActivity.settingRelax(time/5, snooze);
-				
+				RelaxActivity.settingRelax(time / 5, snooze);
+
 			}
 
 			@Override
 			public void onStartTrackingTouch(SeekBar seekBar) {
-				// TODO Auto-generated method stub
+
 			}
 
 			@Override
 			public void onStopTrackingTouch(SeekBar seekBar) {
-				// TODO Auto-generated method stub
+
 			}
 		});
 
@@ -80,7 +96,7 @@ public class SettingActivity extends Activity {
 		button.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				showFileChooser();
-				
+
 			}
 		});
 
@@ -90,7 +106,9 @@ public class SettingActivity extends Activity {
 
 	private void showFileChooser() {
 		Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
-		intent.setType("*/*");
+
+		// Set data type so the picker should display audio file only
+		intent.setType("audio/*");
 		intent.addCategory(Intent.CATEGORY_OPENABLE);
 
 		try {
@@ -102,7 +120,7 @@ public class SettingActivity extends Activity {
 			Toast.makeText(this, "Please install a File Manager.",
 					Toast.LENGTH_SHORT).show();
 			StudyActivity.settingStudy(time, snooze, urlMusic);
-			RelaxActivity.settingRelax(time/5, snooze);
+			RelaxActivity.settingRelax(time / 5, snooze);
 		}
 	}
 
@@ -117,7 +135,7 @@ public class SettingActivity extends Activity {
 				try {
 					urlMusic = SettingActivity.getPath(this, uri);
 				} catch (URISyntaxException e) {
-					// TODO Auto-generated catch block
+
 					e.printStackTrace();
 				}
 
@@ -129,7 +147,7 @@ public class SettingActivity extends Activity {
 		}
 		super.onActivityResult(requestCode, resultCode, data);
 		StudyActivity.settingStudy(time, snooze, urlMusic);
-		RelaxActivity.settingRelax(time/5, snooze);
+		RelaxActivity.settingRelax(time / 5, snooze);
 	}
 
 	public static String getPath(Context context, Uri uri)

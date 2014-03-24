@@ -1,7 +1,0 @@
-(function($){$(document).ready(function(){var isInternal=new RegExp("^(https?):\/\/"+ window.location.host,"i");$(document.body).click(function(event){$(event.target).closest("a,area").each(function(){var ga=Drupal.settings.googleanalytics;var isInternalSpecial=new RegExp("(\/go\/.*)$","i");var isDownload=new RegExp("\\.("+ ga.trackDownloadExtensions+")$","i");if(isInternal.test(this.href)){if($(this).is('.colorbox')){}
-else if(ga.trackDownload&&isDownload.test(this.href)){var extension=isDownload.exec(this.href);_gaq.push(["_trackEvent","Downloads",extension[1].toUpperCase(),this.href.replace(isInternal,'')]);}
-else if(isInternalSpecial.test(this.href)){_gaq.push(["_trackPageview",this.href.replace(isInternal,'')]);}}
-else{if(ga.trackMailto&&$(this).is("a[href^='mailto:'],area[href^='mailto:']")){_gaq.push(["_trackEvent","Mails","Click",this.href.substring(7)]);}
-else if(ga.trackOutbound&&this.href.match(/^\w+:\/\//i)){if(ga.trackDomainMode==2&&isCrossDomain(this.hostname,ga.trackCrossDomains)){event.preventDefault();_gaq.push(["_link",this.href]);}
-else{_gaq.push(["_trackEvent","Outbound links","Click",this.href]);}}}});});$(document).bind("cbox_complete",function(){var href=$.colorbox.element().attr("href");if(href){_gaq.push(["_trackPageview",href.replace(isInternal,'')]);}});});function isCrossDomain(hostname,crossDomains){if(!crossDomains){return false;}
-else{return $.inArray(hostname,crossDomains)>-1?true:false;}}})(jQuery);;
