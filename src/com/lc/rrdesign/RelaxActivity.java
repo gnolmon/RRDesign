@@ -18,7 +18,7 @@ import android.widget.Button;
 
 public class RelaxActivity extends Activity {
 
-	RelaxCount counter,counterSnooze;
+	RelaxCount counter, counterSnooze;
 	AlertDialog.Builder alert;
 	Random randomMethod;
 	int activitieNumber;
@@ -26,6 +26,7 @@ public class RelaxActivity extends Activity {
 	Button change;
 	static int timeRelax = 0;
 	static int snoozeTimes;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -33,41 +34,35 @@ public class RelaxActivity extends Activity {
 		webView = (WebView) findViewById(R.id.webView);
 		webView.getSettings().setJavaScriptEnabled(true);
 		change = (Button) findViewById(R.id.changeMethod);
-		
-		
+
 		change.setOnClickListener(new View.OnClickListener() {
-			
+
 			@Override
 			public void onClick(View v) {
 				methodRandom();
 			}
 		});
-		
+
 		DialogSnooze();
-		if (timeRelax > 0)
-		{
-			counter = new RelaxCount(timeRelax*1000*60, 1000);
+		if (timeRelax > 0) {
+			counter = new RelaxCount(timeRelax * 1000 * 60, 1000);
+			counter.start();
+		} else {
+			counter = new RelaxCount(1 * 1000 * 60, 1000);
 			counter.start();
 		}
-		else 
-		{
-			counter = new RelaxCount(1*1000*60, 1000);
-			counter.start();
-		}
-		
-		//Make random method
+
+		// Make random method
 
 		methodRandom();
 	}
-
 
 	private void methodRandom() {
 		randomMethod = new Random();
 		int n = randomMethod.nextInt(10000);
 		activitieNumber = n % 5;
-	
-		switch(activitieNumber)
-		{
+
+		switch (activitieNumber) {
 		case 0:
 			webView.loadUrl("file:///android_asset/Game/2048.htm");
 			break;
@@ -81,11 +76,10 @@ public class RelaxActivity extends Activity {
 			webView.loadUrl("file:///android_asset/Quiz/Quiz.htm");
 			break;
 		case 4:
-			webView.loadUrl("https://www.youtube.com/channel/UCfa352_VIp2AI7R9Euh0QfA");
+			webView.loadUrl("file:///android_asset/Game/2048.htm");
 			break;
 		}
 	}
-
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -95,69 +89,82 @@ public class RelaxActivity extends Activity {
 	}
 
 	private void DialogSnooze() {
-		/// Make a dialog snooze
+		// / Make a dialog snooze
 		alert = new AlertDialog.Builder(this);
-	    alert.setTitle("Relax").setMessage("Just Finish!! Let's Study");
-	    //Creat a button on dialog 
-	    alert.setPositiveButton("Snooze", new DialogInterface.OnClickListener() {
-	        public void onClick(DialogInterface dialog, int whichButton) {
-	            //Your action here
-	        	counterSnooze = new RelaxCount(60000, 1000);
-	        	counterSnooze.start();
-	        }
-	    });
-	    alert.setNegativeButton("Study ",
-	        new DialogInterface.OnClickListener() {
-	            public void onClick(DialogInterface dialog, int whichButton) {
-	            	try {
-						this.finalize();
-					} catch (Throwable e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
+		alert.setTitle("Relax").setMessage("Just Finish!! Let's Study");
+		// Creat a button on dialog
+		alert.setPositiveButton("Snooze",
+				new DialogInterface.OnClickListener() {
+					public void onClick(DialogInterface dialog, int whichButton) {
+						// Your action here
+						counterSnooze = new RelaxCount(60000, 1000);
+						counterSnooze.start();
 					}
-	            	Intent study = new Intent(RelaxActivity.this,StudyActivity.class);
-	            	startActivity(study);
-	            }
-	        });
+				});
+		alert.setNegativeButton("Study ",
+				new DialogInterface.OnClickListener() {
+					public void onClick(DialogInterface dialog, int whichButton) {
+						try {
+							this.finalize();
+						} catch (Throwable e) {
+							e.printStackTrace();
+						}
+						Intent study = new Intent(RelaxActivity.this,
+								StudyActivity.class);
+						startActivity(study);
+
+						// Finish Relax Activity de tranh khi nguoi dung an phim
+						// back co the quay tro lai relax trong luc dang hoc
+
+						finish();
+					}
+				});
+
+		// Disable ability to dismiss Alert
+		alert.setCancelable(false);
 	}
-	
+
 	public class RelaxCount extends CountDownTimer {
 		RelaxCount(long millisInFuture, long countDownInterval) {
-			// TODO Auto-generated constructor stub
+
 			super(millisInFuture, countDownInterval);
 		}
 
 		@Override
 		public void onFinish() {
-			// TODO Auto-generated method stub
-			Uri notification = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
-			Ringtone r = RingtoneManager.getRingtone(getApplicationContext(), notification);
+
+			Uri notification = RingtoneManager
+					.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+			Ringtone r = RingtoneManager.getRingtone(getApplicationContext(),
+					notification);
 			r.play();
-			alert.show();		
-//			Intent startRelax = new Intent(mContext, RelaxActivity.class);
-//			mContext.startActivity(startRelax);
+			alert.show();
+			// Intent startRelax = new Intent(mContext, RelaxActivity.class);
+			// mContext.startActivity(startRelax);
 		}
 
 		@Override
 		public void onTick(long millisUntilFinished) {
-			// TODO Auto-generated method stub
-			int m,s;
+
+			int m;
 			m = (int) millisUntilFinished / 60000;
-			s =  (int) (millisUntilFinished - m*60000) /1000;
-		
+
 		}
 	}
 
 	@Override
 	protected void onDestroy() {
-		// TODO Auto-generated method stub
 		super.onDestroy();
+		if (counter != null)
+			counter.cancel();
+		if (counterSnooze != null)
+			counterSnooze.cancel();
 	}
-	 
+
 	public static void settingRelax(int time2, int snoozetime) {
-		// TODO Auto-generated method stub
-		timeRelax =time2;
+
+		timeRelax = time2;
 		snoozeTimes = snoozetime;
 	}
-	
+
 }

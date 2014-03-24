@@ -104,7 +104,7 @@ public class MainView extends View {
 			if (requestPress(X, Y)) {
 				buttonRequestPress = true;
 			}
-			if (updatePress(X, Y)){
+			if (updatePress(X, Y)) {
 				buttonUpdatePress = true;
 			}
 			break;
@@ -134,8 +134,12 @@ public class MainView extends View {
 				mContext.startActivity(startRequest);
 			}
 			buttonRequestPress = false;
-			if (buttonUpdatePress){
-				Toast toast = Toast.makeText(mContext, "You have just updated the newest database and version", Toast.LENGTH_SHORT);
+			if (buttonUpdatePress) {
+				Toast toast = Toast
+						.makeText(
+								mContext,
+								"You have just updated the newest database and version",
+								Toast.LENGTH_SHORT);
 				toast.setGravity(Gravity.BOTTOM, 0, 0);
 				toast.show();
 			}
